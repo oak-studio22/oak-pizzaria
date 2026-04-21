@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Oak Pizzaria - Cardápio Digital</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="logo">OAK PIZZARIA</div>
+        <ul class="nav-links">
+            <li><a href="#home">Início</a></li>
+            <li><a href="#cardapio">Cardápio</a></li>
+            <li><a href="#bebidas">Bebidas</a></li>
+            <li><a href="#sobre">Sobre</a></li>
+            <li><a href="#contato">Contato</a></li>
+            <li><a href="#carrinho" class="cart-link"><span class="cart-icon">🛒</span><span class="cart-count">0</span></a></li>
+        </ul>
+        <div class="menu-toggle">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </nav>
+
+    <section id="home" class="hero">
+        <div class="video-background">
+            <video autoplay muted loop playsinline id="hero-video">
+                <source src="video para site oak studio 2.mp4" type="video/mp4">
+            </video>
+            <div class="video-overlay"></div>
+        </div>
+        <div class="hero-content">
+            <h1 class="hero-title">OAK PIZZARIA</h1>
+<p class="hero-subtitle">As Melhores Pizzas da Cidade</p>
+        <a href="#cardapio" class="cta-button">Ver Cardápio</a>
+        </div>
+    </section>
+
+    <section id="cardapio" class="pizzas-carousel">
+        <h2 class="section-title">Nosso Cardápio</h2>
+        <p class="section-subtitle">Todas as pizzas são preparadas com ingredientes frescos e selecionados</p>
+        
+        <div class="menu-grid">
+            <div class="menu-card">
+                <div class="menu-card-image">
+                    <img src="imagens (1).jfif" alt="Pizza Margherita">
+                    <span class="menu-card-badge">Clássica</span>
+                </div>
+                <div class="menu-card-content">
+                    <h3>Oak Pizza Margherita</h3>
+                    <p class="ingredients">Molho de tomate, mussarela fresca, manjericão e azeite de oliva extra virgem</p>
+                    <div class="menu-card-footer">
+                        <span class="menu-card-price">R$ 59,90</span>
+                        <button class="menu-card-btn">Pedir</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="menu-card">
+                <div class="menu-card-image">
+                    <img src="imagens (2).jfif" alt="Pizza Calabresa">
+                    <span class="menu-card-badge">Popular</span>
+                </div>
+                <div class="menu-card-content">
+                    <h3>Oak Pizza Calabresa</h3>
+                    <p class="ingredients">Mussarela, calabresa defumada, cebola roxa e orégano</p>
+                    <div class="menu-card-footer">
+                        <span class="menu-card-price">R$ 54,90</span>
+                        <button class="menu-card-btn">Pedir</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="menu-card">
+                <div class="menu-card-image">
+                    <img src="imagens (3).jfif" alt="Pizza Frango">
+                    <span class="menu-card-badge">Especial</span>
+                </div>
+                <div class="menu-card-content">
+                    <h3>Oak Pizza Frango</h3>
+                    <p class="ingredients">Frango desfiado suave, mussarela, requeijão catupiry e alecrim</p>
+                    <div class="menu-card-footer">
+                        <span class="menu-card-price">R$ 64,90</span>
+                        <button class="menu-card-btn">Pedir</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="menu-card">
+                <div class="menu-card-image">
+                    <img src="imagens (4).jfif" alt="Pizza Portuguesa">
+                    <span class="menu-card-badge">Tradicional</span>
+                </div>
+                <div class="menu-card-content">
+                    <h3>Oak Pizza Portuguesa</h3>
+                    <p class="ingredients">Mussarela, presunto york, ovo, cebola, azeitonas e salsa</p>
+                    <div class="menu-card-footer">
+                        <span class="menu-card-price">R$ 62,90</span>
+                        <button class="menu-card-btn">Pedir</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="bebidas-section">
+        <h2 class="section-title">Bebidas</h2>
+        <p class="section-subtitle">Bebidas artesanais e refrigerantes premium</p>
+        
+        <div class="menu-grid">
+            <div class="menu-card">
+                <div class="menu-card-image">
+                    <img src="bebidas (1).png" alt="Refrigerante">
+                    <span class="menu-card-badge">Premium</span>
+                </div>
+                <div class="menu-card-content">
+                    <h3>Refrigerante Lata</h3>
+                    <p class="ingredients">Coca-Cola, Guaraná ou Sprite</p>
+                    <div class="menu-card-footer">
+                        <span class="menu-card-price">R$ 8,90</span>
+                        <button class="menu-card-btn">Pedir</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="menu-card">
+                <div class="menu-card-image">
+                    <img src="bebidas (2).png" alt="Suco Natural">
+                    <span class="menu-card-badge">Natural</span>
+                </div>
+                <div class="menu-card-content">
+                    <h3>Suco Natural</h3>
+                    <p class="ingredients">Laranja, Manga ou Abacaxi</p>
+                    <div class="menu-card-footer">
+                        <span class="menu-card-price">R$ 12,90</span>
+                        <button class="menu-card-btn">Pedir</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+<section id="sobre" class="about">
+        <div class="container">
+            <h2 class="section-title">Sobre Nós</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>Somos uma pizzaria artesanal comprometida com a qualidade e o sabor autêntico. Nossa massa é preparada diariamente com ingredientes frescos e selecionados.</p>
+                    <p>Com muito amor e dedicação, preparamos as melhores pizzas da região, usando receitas passed de geração em geração.</p>
+                </div>
+                <div class="about-stats">
+                    <div class="stat">
+                        <span class="stat-number">10+</span>
+                        <span class="stat-label">Anos de Tradição</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number">50k+</span>
+                        <span class="stat-label">Pizzas Vendidas</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number">10k+</span>
+                        <span class="stat-label">Clientes Felizes</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="entregas" class="services">
+        <div class="container">
+            <h2 class="section-title">Entregamos em Casa</h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">🛵</div>
+                    <h3>Delivery</h3>
+                    <p>Entregamos em toda a cidade com rapidez e segurança.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">🏠</div>
+                    <h3>Retirada</h3>
+                    <p>Peça pelo app e retire na pizzaria sem esperar.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">🎉</div>
+                    <h3>Eventos</h3>
+                    <p>Servimos festas, corporativa e eventos especiais.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">🎁</div>
+                    <h3>Cupons</h3>
+                    <p>Temos sempre promoções e descuentos exclusivos.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="servicos" class="services">
+        <div class="container">
+            <h2 class="section-title">Nossos Serviços</h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">🎬</div>
+                    <h3>Produção de Vídeo</h3>
+                    <p>Création de vídeos institucionais, publicitários e conteúdo para redes sociais.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">🎨</div>
+                    <h3>Design Gráfico</h3>
+                    <p>Identidade visual, peças publicitárias e materiais gráficos personalizados.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">✨</div>
+                    <h3>Animação</h3>
+                    <p>Animações 2D/3D, motion graphics e efeitos visuais para destacar sua marca.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">🌐</div>
+                    <h3>Desenvolvimento Web</h3>
+                    <p>Criação de sites responsivos e experiências digitais interativas.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contato" class="contact">
+        <div class="container">
+            <h2 class="section-title">Peça Agora</h2>
+            <p class="contact-subtitle">WhatsApp: (21) 99311-07485</p>
+            <form class="contact-form" id="contact-form">
+                <div class="form-group">
+                    <input type="text" name="nome" placeholder="Seu Nome" required>
+                </div>
+                <div class="form-group">
+                    <input type="tel" name="telefone" placeholder="Seu WhatsApp" required>
+                </div>
+                <div class="form-group">
+                    <textarea name="mensagem" placeholder="Escreva seu pedido..." rows="5" required></textarea>
+                </div>
+                <button type="submit" class="submit-button">Enviar Pedido</button>
+            </form>
+        </div>
+    </section>
+
+    <section class="instagram-section">
+        <div class="container">
+            <h2 class="section-title">Siga-nos no Instagram</h2>
+            <p class="section-subtitle">@oakstudio.lab</p>
+            <a href="https://www.instagram.com/oakstudio.lab/" target="_blank" class="instagram-link">
+                <span class="instagram-icon">📷</span>
+                <span>@oakstudio.lab</span>
+            </a>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 Oak Pizzaria. Todos os direitos reservados.</p>
+            <p class="footer-address">Rua exemplo, 123 - Centro - Cidade</p>
+        </div>
+    </footer>
+
+    <div class="cart-sidebar" id="cart-sidebar">
+        <div class="cart-header">
+            <h3>Seu Pedido</h3>
+            <button class="cart-close" onclick="closeCart()">&times;</button>
+        </div>
+        <div class="cart-items" id="cart-items">
+            <p class="cart-empty">Seu carrinho está vazio</p>
+        </div>
+        <div class="cart-footer">
+            <div class="cart-total">
+                <span>Total:</span>
+                <span id="cart-total">R$ 0,00</span>
+            </div>
+            <button class="cart-checkout" onclick="finalizarPedido()">Finalizar Pedido</button>
+        </div>
+    </div>
+    <div class="cart-overlay" id="cart-overlay" onclick="closeCart()"></div>
+
+    <script src="script.js"></script>
+</body>
+</html>
