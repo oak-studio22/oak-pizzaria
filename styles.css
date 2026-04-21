@@ -15,6 +15,13 @@
     --gradient: linear-gradient(135deg, #e63946 0%, #ff8fa3 50%, #e63946 100%);
     --font-primary: 'Outfit', sans-serif;
     --font-secondary: 'Space Grotesk', sans-serif;
+    --transition-fast: 0.2s ease;
+    --transition-normal: 0.3s ease;
+    --transition-slow: 0.5s ease;
+    --shadow-sm: 0 2px 10px rgba(0, 0, 0, 0.1);
+    --shadow-md: 0 5px 20px rgba(0, 0, 0, 0.15);
+    --shadow-lg: 0 10px 40px rgba(0, 0, 0, 0.2);
+    --shadow-glow: 0 0 30px rgba(230, 57, 70, 0.3);
 }
 
 html {
@@ -999,4 +1006,417 @@ body {
         width: 100%;
         right: -100%;
     }
+}
+
+/* ========================
+   ANIMAÇÕES
+   ======================== */
+
+/* Fade In */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes fadeInRight {
+    from {
+        opacity: 0;
+        transform: translateX(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* Scale */
+@keyframes scaleIn {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* Pulse */
+@keyframes pulse {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.05);
+    }
+}
+
+/* Shake */
+@keyframes shake {
+    0%, 100% {
+        transform: translateX(0);
+    }
+    25% {
+        transform: translateX(-5px);
+    }
+    75% {
+        transform: translateX(5px);
+    }
+}
+
+/* Bounce */
+@keyframes bounce {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+/* Loading Spinner */
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* Classes de animação */
+.animate-fadeIn {
+    animation: fadeIn 0.5s ease forwards;
+}
+
+.animate-fadeInUp {
+    animation: fadeInUp 0.6s ease forwards;
+}
+
+.animate-fadeInDown {
+    animation: fadeInDown 0.6s ease forwards;
+}
+
+.animate-scaleIn {
+    animation: scaleIn 0.5s ease forwards;
+}
+
+.animate-pulse {
+    animation: pulse 2s ease infinite;
+}
+
+.animate-bounce {
+    animation: bounce 1s ease infinite;
+}
+
+/*Delay animations */
+.delay-1 { animation-delay: 0.1s; }
+.delay-2 { animation-delay: 0.2s; }
+.delay-3 { animation-delay: 0.3s; }
+.delay-4 { animation-delay: 0.4s; }
+.delay-5 { animation-delay: 0.5s; }
+
+/* Hover Effects */
+.menu-card {
+    transition: transform var(--transition-normal), 
+                box-shadow var(--transition-normal),
+                border-color var(--transition-normal),
+                opacity var(--transition-normal);
+}
+
+.menu-card:hover {
+    transform: translateY(-10px);
+    box-shadow: var(--shadow-lg), var(--shadow-glow);
+}
+
+.menu-card:hover .menu-card-image img {
+    transform: scale(1.1);
+}
+
+.menu-card-image img {
+    transition: transform var(--transition-slow);
+}
+
+.service-card {
+    transition: transform var(--transition-normal), 
+                box-shadow var(--transition-normal),
+                border-color var(--transition-normal),
+                background var(--transition-normal);
+}
+
+.service-card:hover {
+    transform: translateY(-10px) scale(1.02);
+    box-shadow: var(--shadow-lg);
+}
+
+.stat {
+    transition: transform var(--transition-normal),
+                box-shadow var(--transition-normal),
+                border-color var(--transition-normal),
+                background var(--transition-normal);
+}
+
+.stat:hover {
+    transform: translateY(-8px);
+    border-color: var(--primary);
+    box-shadow: var(--shadow-md), var(--shadow-glow);
+}
+
+/* Nav link hover animation */
+.nav-links a {
+    position: relative;
+    transition: color var(--transition-fast);
+}
+
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--primary);
+    transition: width var(--transition-normal);
+}
+
+.nav-links a:hover::after {
+    width: 100%;
+}
+
+.nav-links a:hover {
+    color: var(--primary);
+}
+
+/* Button hover effects */
+.cta-button,
+.menu-card-btn,
+.cart-checkout,
+.submit-button {
+    transition: transform var(--transition-fast),
+                box-shadow var(--transition-normal),
+                background var(--transition-normal);
+}
+
+.cta-button:hover,
+.menu-card-btn:hover,
+.cart-checkout:hover,
+.submit-button:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-lg), var(--shadow-glow);
+}
+
+.cta-button:active,
+.menu-card-btn:active,
+.cart-checkout:active,
+.submit-button:active {
+    transform: translateY(-1px);
+}
+
+/* Input focus animation */
+.form-group input,
+.form-group textarea {
+    transition: border-color var(--transition-fast),
+                box-shadow var(--transition-fast),
+                background var(--transition-fast);
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(230, 57, 70, 0.2);
+}
+
+/* Carousel buttons */
+.carousel-btn {
+    transition: background var(--transition-fast),
+                color var(--transition-fast),
+                transform var(--transition-fast),
+                opacity var(--transition-fast);
+}
+
+.carousel-btn:hover {
+    background: var(--primary);
+    color: white;
+    transform: scale(1.1);
+}
+
+.carousel-btn:active {
+    transform: scale(0.95);
+}
+
+/* Cart quantity buttons */
+.cart-qty-btn,
+.cart-item-remove {
+    transition: all var(--transition-fast);
+}
+
+.cart-qty-btn:hover {
+    background: var(--primary);
+    color: white;
+}
+
+.cart-item-remove:hover {
+    transform: scale(1.2);
+}
+
+/* Instagram link hover */
+.instagram-link {
+    transition: transform var(--transition-normal),
+                box-shadow var(--transition-normal);
+}
+
+.instagram-link:hover {
+    transform: scale(1.05) translateY(-3px);
+    box-shadow: 0 15px 40px rgba(220, 39, 67, 0.4);
+}
+
+/* Scroll Reveal Animation */
+.reveal {
+    opacity: 0;
+    transform: translateY(50px);
+    transition: all 0.8s ease;
+}
+
+.reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.reveal-left {
+    opacity: 0;
+    transform: translateX(-50px);
+    transition: all 0.8s ease;
+}
+
+.reveal-left.active {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.reveal-right {
+    opacity: 0;
+    transform: translateX(50px);
+    transition: all 0.8s ease;
+}
+
+.reveal-right.active {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.reveal.scale {
+    opacity: 0;
+    transform: scale(0.8);
+    transition: all 0.8s ease;
+}
+
+.reveal.scale.active {
+    opacity: 1;
+    transform: scale(1);
+}
+
+/* Hero animation */
+.hero-title {
+    animation: fadeInUp 1s ease forwards;
+    animation-delay: 0.3s;
+    opacity: 0;
+}
+
+.hero-subtitle {
+    animation: fadeInUp 1s ease forwards;
+    animation-delay: 0.6s;
+    opacity: 0;
+}
+
+.cta-button {
+    animation: fadeInUp 1s ease forwards;
+    animation-delay: 0.9s;
+    opacity: 0;
+}
+
+/* Section title animation */
+.section-title {
+    animation: fadeInDown 0.8s ease forwards;
+}
+
+.section-subtitle {
+    animation: fadeInUp 0.8s ease forwards;
+    animation-delay: 0.2s;
+    opacity: 0;
+}
+
+/* Menu cards stagger animation */
+.menu-card {
+    opacity: 0;
+    animation: fadeInUp 0.6s ease forwards;
+}
+
+.menu-card:nth-child(1) { animation-delay: 0.1s; }
+.menu-card:nth-child(2) { animation-delay: 0.2s; }
+.menu-card:nth-child(3) { animation-delay: 0.3s; }
+.menu-card:nth-child(4) { animation-delay: 0.4s; }
+.menu-card:nth-child(5) { animation-delay: 0.5s; }
+.menu-card:nth-child(6) { animation-delay: 0.6s; }
+
+/* Smooth scroll indicator */
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 100px;
+}
+
+/* Selection color */
+::selection {
+    background: var(--primary);
+    color: white;
+}
+
+/* Smooth image loading */
+img {
+    transition: opacity 0.3s ease;
+}
+
+img[src] {
+    opacity: 1;
+}
+
+img:not([src]) {
+    opacity: 0;
 }

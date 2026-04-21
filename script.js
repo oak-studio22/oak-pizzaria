@@ -113,7 +113,115 @@ document.querySelectorAll('.menu-card-btn').forEach(btn => {
     });
 });
 
+// Scroll Reveal Animation
+function initScrollReveal() {
+    const reveals = document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .scale');
+    
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('active');
+            }
+        });
+    }, {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+    });
+    
+    reveals.forEach(el => observer.observe(el));
+}
+
+// Parallax effect for hero
+function initParallax() {
+    const hero = document.querySelector('.hero');
+    const video = document.querySelector('#hero-video');
+    
+    if (hero && video) {
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            video.style.transform = `translateY(${scrolled * 0.5}px)`;
+        });
+    }
+}
+
+// Smooth scroll for anchor links
+function initSmoothScroll() {
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+            e.preventDefault();
+            const target = document.querySelector(this.getAttribute('href'));
+            if (target) {
+                target.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            }
+        });
+    });
+}
+
+// Navbar scroll effect
+function initNavbarScroll() {
+    const navbar = document.querySelector('.navbar');
+    
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 100) {
+            navbar.classList.add('scrolled');
+        } else {
+            navbar.classList.remove('scrolled');
+        }
+    });
+}
+
+// Add loading animation
+function initPageLoad() {
+    document.body.style.opacity = '0';
+    document.body.style.transition = 'opacity 0.5s ease';
+    
+    window.addEventListener('load', () => {
+        document.body.style.opacity = '1';
+    });
+}
+
+// Counter animation for stats
+function animateCounters() {
+    const counters = document.querySelectorAll('.stat-number');
+    
+    counters.forEach(counter => {
+        const target = parseInt(counter.textContent);
+        const duration = 2000;
+        const step = target / (duration / 16);
+        let current = 0;
+        
+        const updateCounter = () => {
+            current += step;
+            if (current < target) {
+                counter.textContent = Math.floor(current) + '+';
+                requestAnimationFrame(updateCounter);
+            } else {
+                counter.textContent = target + '+';
+            }
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+            if (entries[0].isIntersecting) {
+                updateCounter();
+                observer.unobserve(counter);
+            }
+        }, { threshold: 0.5 });
+        
+        observer.observe(counter);
+    });
+}
+
+// Initialize all animations
 document.addEventListener('DOMContentLoaded', () => {
+    initScrollReveal();
+    initParallax();
+    initSmoothScroll();
+    initNavbarScroll();
+    initPageLoad();
+    animateCounters();
     const navbar = document.querySelector('.navbar');
     const menuToggle = document.querySelector('.menu-toggle');
     const navLinks = document.querySelector('.nav-links');
