@@ -4,21 +4,36 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Oak Pizzaria - Cardápio Digital</title>
-    <meta name="description" content="Cardápio digital da Oak Pizzaria - As melhores pizzas da cidade">
+    <meta name="description" content="Cardápio digital da Oak Pizzaria - As melhores pizzas da cidade. Pizza artesanal, massa fresca, entrega rápida.">
     <meta name="theme-color" content="#e63946">
+    <meta name="robots" content="index, follow">
     <meta property="og:title" content="Oak Pizzaria - Cardápio Digital">
     <meta property="og:description" content="As melhores pizzas da cidade - Peça pelo WhatsApp">
     <meta property="og:image" content="/imagens (1).jfif">
     <meta property="og:url" content="https://oak-pizzaria.vercel.app">
     <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Oak Pizzaria">
     <link rel="canonical" href="https://oak-pizzaria.vercel.app">
+    <link rel="icon" type="image/png" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🍕</text></svg>">
+    <link rel="apple-touch-icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🍕</text></svg>">
     <link rel="stylesheet" href="styles.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap">
 </head>
 <body>
-    <nav class="navbar">
+    <a href="#main" class="skip-link">Pular para o conteúdo</a>
+    
+    <div class="loading-screen" id="loading">
+        <div class="loader">
+            <span class="loader-text">OAK PIZZARIA</span>
+            <div class="loader-bar">
+                <div class="loader-progress"></div>
+            </div>
+        </div>
+    </div>
+
+    <nav class="navbar" role="navigation" aria-label="Menu principal">
         <div class="logo">OAK PIZZARIA</div>
         <ul class="nav-links">
             <li><a href="#home">Início</a></li>
@@ -36,7 +51,8 @@
         </div>
     </nav>
 
-    <section id="home" class="hero">
+    <main id="main">
+    <section id="home" class="hero" aria-label="Seção inicial">
         <div class="video-background">
             <video autoplay muted loop playsinline id="hero-video">
                 <source src="video para site oak studio 2.mp4" type="video/mp4">
@@ -208,35 +224,33 @@
         </div>
     </section>
 
-    <section id="servicos" class="services">
+    <section id="locais" class="locations reveal">
         <div class="container">
-            <h2 class="section-title">Nossos Serviços</h2>
-            <div class="services-grid">
-                <div class="service-card">
-                    <div class="service-icon">🎬</div>
-                    <h3>Produção de Vídeo</h3>
-                    <p>Création de vídeos institucionais, publicitários e conteúdo para redes sociais.</p>
+            <h2 class="section-title">Nossas Unidades</h2>
+            <div class="locations-grid">
+                <div class="location-card">
+                    <div class="location-icon">📍</div>
+                    <h3>Centro</h3>
+                    <p>Rua Principal, 123</p>
+                    <p class="location-hours">Seg a Dom: 18h às 23h</p>
                 </div>
-                <div class="service-card">
-                    <div class="service-icon">🎨</div>
-                    <h3>Design Gráfico</h3>
-                    <p>Identidade visual, peças publicitárias e materiais gráficos personalizados.</p>
+                <div class="location-card">
+                    <div class="location-icon">📍</div>
+                    <h3>Zona Sul</h3>
+                    <p>Av. Principal, 456</p>
+                    <p class="location-hours">Seg a Dom: 18h às 23h</p>
                 </div>
-                <div class="service-card">
-                    <div class="service-icon">✨</div>
-                    <h3>Animação</h3>
-                    <p>Animações 2D/3D, motion graphics e efeitos visuais para destacar sua marca.</p>
-                </div>
-                <div class="service-card">
-                    <div class="service-icon">🌐</div>
-                    <h3>Desenvolvimento Web</h3>
-                    <p>Criação de sites responsivos e experiências digitais interativas.</p>
+                <div class="location-card">
+                    <div class="location-icon">📍</div>
+                    <h3>Shopping</h3>
+                    <p>Piso Gourmet, Loja 12</p>
+                    <p class="location-hours">Dom a Qui: 12h às 22h</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="contato" class="contact">
+    <section id="contato" class="contact reveal">
         <div class="container">
             <h2 class="section-title">Peça Agora</h2>
             <p class="contact-subtitle">WhatsApp: (21) 99311-07485</p>
@@ -254,8 +268,9 @@
             </form>
         </div>
     </section>
+    </main>
 
-    <section class="instagram-section">
+    <section class="instagram-section" aria-label="Siga-nos no Instagram">
         <div class="container">
             <h2 class="section-title">Siga-nos no Instagram</h2>
             <p class="section-subtitle">@oakstudio.lab</p>

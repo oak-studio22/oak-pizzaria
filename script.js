@@ -174,54 +174,22 @@ function initNavbarScroll() {
 }
 
 // Add loading animation
-function initPageLoad() {
-    document.body.style.opacity = '0';
-    document.body.style.transition = 'opacity 0.5s ease';
-    
-    window.addEventListener('load', () => {
-        document.body.style.opacity = '1';
-    });
-}
-
-// Counter animation for stats
-function animateCounters() {
-    const counters = document.querySelectorAll('.stat-number');
-    
-    counters.forEach(counter => {
-        const target = parseInt(counter.textContent);
-        const duration = 2000;
-        const step = target / (duration / 16);
-        let current = 0;
-        
-        const updateCounter = () => {
-            current += step;
-            if (current < target) {
-                counter.textContent = Math.floor(current) + '+';
-                requestAnimationFrame(updateCounter);
-            } else {
-                counter.textContent = target + '+';
-            }
-        };
-        
-        const observer = new IntersectionObserver((entries) => {
-            if (entries[0].isIntersecting) {
-                updateCounter();
-                observer.unobserve(counter);
-            }
-        }, { threshold: 0.5 });
-        
-        observer.observe(counter);
-    });
-}
-
-// Initialize all animations
 document.addEventListener('DOMContentLoaded', () => {
     initScrollReveal();
     initParallax();
     initSmoothScroll();
     initNavbarScroll();
-    initPageLoad();
     animateCounters();
+    
+    // Hide loading screen
+    setTimeout(() => {
+        const loading = document.getElementById('loading');
+        if (loading) {
+            loading.classList.add('hidden');
+            setTimeout(() => loading.remove(), 500);
+        }
+    }, 2000);
+});
     const navbar = document.querySelector('.navbar');
     const menuToggle = document.querySelector('.menu-toggle');
     const navLinks = document.querySelector('.nav-links');
