@@ -35,18 +35,13 @@ function updateCartUI() {
     const cartItemsEl = document.getElementById('cart-items');
     const cartCountEl = document.querySelector('.cart-count');
     const cartTotalEl = document.getElementById('cart-total');
-    const sidebar = document.getElementById('cart-sidebar');
-    const overlay = document.getElementById('cart-overlay');
     
-    // Update cart count
     const totalQty = cart.reduce((sum, item) => sum + item.qty, 0);
     cartCountEl.textContent = totalQty;
     
-    // Update cart total
     const total = cart.reduce((sum, item) => sum + (item.price * item.qty), 0);
     cartTotalEl.textContent = `R$ ${total.toFixed(2).replace('.', ',')}`;
     
-    // Render cart items
     if (cart.length === 0) {
         cartItemsEl.innerHTML = '<p class="cart-empty">Seu carrinho está vazio</p>';
     } else {
@@ -94,10 +89,6 @@ function finalizarPedido() {
     message += `%0A*Total: R$ ${total.toFixed(2).replace('.', ',')}*`;
     
     window.open(`https://wa.me/5521993107485?text=${message}`, '_blank');
-    
-    // Phone link for direct call
-    window.open(`tel:+5521993107485`, '_self');
-    
     closeCart();
 }
 
@@ -173,23 +164,52 @@ function initNavbarScroll() {
     });
 }
 
-// Add loading animation
-document.addEventListener('DOMContentLoaded', () => {
-    initScrollReveal();
-    initParallax();
-    initSmoothScroll();
-    initNavbarScroll();
-    animateCounters();
+// Counter animation for stats
+function animateCounters() {
+    const counters = document.querySelectorAll('.stat-number');
     
-    // Hide loading screen
-    setTimeout(() => {
-        const loading = document.getElementById('loading');
-        if (loading) {
-            loading.classList.add('hidden');
-            setTimeout(() => loading.remove(), 500);
-        }
-    }, 2000);
-});
+    counters.forEach(counter => {
+        const target = parseInt(counter.textContent);
+        const duration = 2000;
+        const step = target / (duration / 16);
+        let current = 0;
+        
+        const updateCounter = () => {
+            current += step;
+            if (current < target) {
+                counter.textContent = Math.floor(current) + '+';
+                requestAnimationFrame(updateCounter);
+            } else {
+                counter.textContent = target + '+';
+            }
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+            if (entries[0].isIntersecting) {
+                updateCounter();
+                observer.unobserve(counter);
+            }
+        }, { threshold: 0.5 });
+        
+        observer.observe(counter);
+    });
+}
+
+// Hide loading screen
+function hideLoadingScreen() {
+    const loading = document.getElementById('loading');
+    if (loading) {
+        loading.classList.add('hidden');
+        setTimeout(() => loading.remove(), 500);
+    }
+}
+
+// Initialize everything
+window.addEventListener('load', hideLoadingScreen);
+
+setTimeout(hideLoadingScreen, 3000);
+
+document.addEventListener('DOMContentLoaded', () => {
     const navbar = document.querySelector('.navbar');
     const menuToggle = document.querySelector('.menu-toggle');
     const navLinks = document.querySelector('.nav-links');
@@ -261,12 +281,12 @@ document.addEventListener('DOMContentLoaded', () => {
             e.preventDefault();
 
             const nome = contactForm.querySelector('input[name="nome"]').value;
-            const email = contactForm.querySelector('input[name="email"]').value;
+            const telefone = contactForm.querySelector('input[name="telefone"]').value;
             const mensagem = contactForm.querySelector('textarea[name="mensagem"]').value;
 
-            console.log('Formulário enviado:', { nome, email, mensagem });
+            console.log('Pedido enviado:', { nome, telefone, mensagem });
 
-            alert('Obrigado! Sua mensagem foi enviada com sucesso. Retornaremos em breve.');
+            alert('Obrigado! Seu pedido foi enviado com sucesso.');
 
             contactForm.reset();
         });
@@ -291,66 +311,10 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     };
 
-    // Carousel functionality
-    const initCarousel = () => {
-        const carouselTrack = document.querySelector('.carousel-track');
-        const slides = Array.from(carouselTrack.children);
-        const prevButton = document.querySelector('.carousel-btn.prev');
-        const nextButton = document.querySelector('.carousel-btn.next');
-        const dotsContainer = document.querySelector('.carousel-dots');
-
-        let currentIndex = 0;
-        const slideCount = slides.length;
-
-        // Create dots
-        slides.forEach((_, index) => {
-            const dot = document.createElement('button');
-            dot.classList.add('carousel-dot');
-            if (index === 0) dot.classList.add('active');
-            dot.setAttribute('aria-label', `Go to slide ${index + 1}`);
-            dotsContainer.appendChild(dot);
-        });
-
-        const dots = Array.from(dotsContainer.children);
-
-        const updateCarousel = () => {
-            // Update slide position
-            carouselTrack.style.transform = `translateX(-${currentIndex * 100}%)`;
-
-            // Update active dot
-            dots.forEach((dot, index) => {
-                dot.classList.toggle('active', index === currentIndex);
-            });
-
-            // Update button states (optional - for infinite loop you'd remove these)
-            prevButton.disabled = currentIndex === 0;
-            nextButton.disabled = currentIndex === slideCount - 1;
-        };
-
-        const goToSlide = (index) => {
-            currentIndex = index;
-            updateCarousel();
-        };
-
-        // Event listeners
-        prevButton.addEventListener('click', () => {
-            goToSlide(currentIndex === 0 ? slideCount - 1 : currentIndex - 1);
-        });
-
-        nextButton.addEventListener('click', () => {
-            goToSlide(currentIndex === slideCount - 1 ? 0 : currentIndex + 1);
-        });
-
-        dots.forEach((dot, index) => {
-            dot.addEventListener('click', () => {
-                goToSlide(index);
-            });
-        });
-
-        // Initialize
-        updateCarousel();
-    };
-
+    initScrollReveal();
+    initParallax();
+    initSmoothScroll();
+    initNavbarScroll();
+    animateCounters();
     animateOnScroll();
-    initCarousel();
 });
